@@ -1,1 +1,16 @@
+
+.App__container{
+  position:relative;
+  padding-left:5.5rem;
+  padding-top:1rem;
+  min-height: 100vh;
+  background-color: var(--secondary-color);
+  color:var(--primary-color);
+}
+
+@media screen and (max-width:400px) {
   
+  .App__container{
+    padding:10px;
+  }
+}
