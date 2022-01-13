@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import Logo from '../../compenent/logo/Logo'
 import './LoginPage.css'
 
 function LoginPage() {
@@ -8,6 +9,9 @@ function LoginPage() {
 
     return (
         <div className="login__container">
+
+            <Logo />
+
             <form className="login__form">
                 <div className="login__title">Login</div>
 
@@ -34,8 +38,8 @@ function LoginPage() {
                 </div>
 
                 <div className="login__btncl">
-                    <button>Login</button>
-                    <button>Quest Credential</button>
+                    <button className='btn'>LOGIN</button>
+                    <button className='btn'>Guest Credential</button>
                 </div>
                 
             </form>

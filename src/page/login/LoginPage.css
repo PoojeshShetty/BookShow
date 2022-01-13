@@ -1,5 +1,7 @@
 .login__container{
     padding:10px;
+    background-color: inherit;
+    color:inherit;
 }
 
 .login__form{
@@ -47,4 +49,10 @@
 
 .login__btncl button{
    width:45%;
+}
+
+.login__form .btn{
+    padding:10px 8px;
+    font-weight: 900;
+    border-radius: 10px;
 }

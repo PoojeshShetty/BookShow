@@ -1,25 +1,137 @@
 import React from 'react'
+import Movie from '../../compenent/movie/Movie'
+import {Link} from 'react-router-dom'
 import './HomePage.css'
+
+const initialMovie = [
+    {
+        id: 1,
+        name: "Avengers",
+        image: "https://i.pinimg.com/originals/85/00/ba/8500ba1dd8868063379c9a1221fe351f.jpg",
+        actors: ["actor 1","actor 2","actor 3"],
+        category: ["Action","Comedy","Sci-fi"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
+        releaseDate: "12-04-2019"
+    },
+    {
+        id:2,
+        name: "Avengers",
+        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        actors: ["actor 1","actor 2","actor 3"],
+        category: ["Action","Comedy","Sci-fi"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
+        releaseDate: "12-04-2019"
+    },
+    {
+        id: 3,
+        name: "Avengers",
+        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        actors: ["actor 1","actor 2","actor 3"],
+        category: ["Action","Comedy","Sci-fi"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
+        releaseDate: "12-04-2019"
+    },
+    {
+        id: 4,
+        name: "Avengers",
+        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        actors: ["actor 1","actor 2","actor 3"],
+        category: ["Action","Comedy","Sci-fi"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
+        releaseDate: "12-04-2019"
+    },
+    {
+        id: 5,
+        name: "Avengers",
+        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        actors: ["actor 1","actor 2","actor 3"],
+        category: ["Action","Comedy","Sci-fi"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
+        releaseDate: "12-04-2019"
+    },
+    {
+        id: 6,
+        name: "Avengers",
+        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        actors: ["actor 1","actor 2","actor 3"],
+        category: ["Action","Comedy","Sci-fi"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
+        releaseDate: "12-04-2019"
+    },
+    {
+        id: 7,
+        name: "Avengers",
+        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        actors: ["actor 1","actor 2","actor 3"],
+        category: ["Action","Comedy","Sci-fi"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
+        releaseDate: "12-04-2019"
+    },
+    {
+        id: 8,
+        name: "Avengers",
+        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        actors: ["actor 1","actor 2","actor 3"],
+        category: ["Action","Comedy","Sci-fi"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
+        releaseDate: "12-04-2019"
+    },
+    {
+        id: 9,
+        name: "Avengers",
+        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        actors: ["actor 1","actor 2","actor 3"],
+        category: ["Action","Comedy","Sci-fi"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
+        releaseDate: "12-04-2019"
+    },
+    {
+        id: 10,
+        name: "Avengers",
+        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        actors: ["actor 1","actor 2","actor 3"],
+        category: ["Action","Comedy","Sci-fi"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
+        releaseDate: "12-04-2019"
+    }
+]
 
 function HomePage() {
     return (
-        <div>
-            <h1>Title</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae ad nostrum magni commodi repudiandae animi? Natus delectus, aliquid quos maxime blanditiis eius labore asperiores, accusantium non, exercitationem inventore totam sit.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sapiente iure beatae reiciendis quae, deleniti aliquam dicta tenetur obcaecati architecto. Harum eligendi officia a natus deleniti. Voluptatibus mollitia cupiditate reprehenderit!
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta corrupti voluptate, obcaecati doloribus vel unde necessitatibus possimus, mollitia libero odio iusto delectus nihil quas voluptas neque numquam placeat eius molestiae?
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla praesentium omnis doloremque minus atque odio, ipsa, consequuntur qui dolore inventore, error repellat. Vitae voluptatem pariatur dicta hic ullam, itaque minus.
-            </p>
+        <div className="home__container">
+            <div className="home__nowshowing">
+                <div className="nowshowing__title">
+                    Now Showing
+                </div>
 
-            <h2>Title</h2>
+                <div className="movies">
+                    {
+                    initialMovie.map(movie => (
+                        <Link to={`/movie/${movie.id}`}  key={movie.id}>
+                            <Movie propsMovie={movie}/>
+                        </Link>
+                    ))
 
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae ad nostrum magni commodi repudiandae animi? Natus delectus, aliquid quos maxime blanditiis eius labore asperiores, accusantium non, exercitationem inventore totam sit.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sapiente iure beatae reiciendis quae, deleniti aliquam dicta tenetur obcaecati architecto. Harum eligendi officia a natus deleniti. Voluptatibus mollitia cupiditate reprehenderit!
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta corrupti voluptate, obcaecati doloribus vel unde necessitatibus possimus, mollitia libero odio iusto delectus nihil quas voluptas neque numquam placeat eius molestiae?
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla praesentium omnis doloremque minus atque odio, ipsa, consequuntur qui dolore inventore, error repellat. Vitae voluptatem pariatur dicta hic ullam, itaque minus.
+                    }
+                </div>
+            </div>
 
-            </p>
+            <div className="home__upcoming">
+                <div className="upcoming__title">
+                    Upcoming
+                </div>
+
+                <div className="movies">
+                    {
+                    initialMovie.map(movie => (
+                        <Link to={`/movie/${movie.id}`}  key={movie.id}>
+                            <Movie propsMovie={movie}/>
+                        </Link>
+                    ))
+
+                    }
+                </div>
+            </div>
         </div>
     )
 }

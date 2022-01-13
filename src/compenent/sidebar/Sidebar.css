@@ -1,8 +1,8 @@
 .sidebar__container{
     position:fixed;
-    border:1px solid #777;
+    border:1px solid black;
     z-index:500;
-    background-color: #23232e;
+    background-color: #1e1e24;
     color:white;
 }
 
@@ -38,13 +38,14 @@
 }
 
 .logo{
-    padding:1.5em 5px;
     font-weight: 900;
     font-size: 1.5rem;
+    padding:1em 8px;
 }
 
 .sidebar__container:hover .item__info{
-    justify-content: space-around;
+    justify-content: space-between;
+    padding:0 1em;
 }
 
 .sidebar__container:hover .logo .item__img img{
@@ -78,7 +79,7 @@
     }
 
     .sidebar__container:hover{
-        width:12rem;
+        width:14rem;
     }
 
     .sidebar__container:hover .item__txt{

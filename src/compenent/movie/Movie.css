@@ -1,0 +1,31 @@
+.movie__info{
+    position:relative;
+    min-width:200px;
+    width: 200px;
+    height: 330px;
+    min-height:330px;
+    overflow: hidden;
+    z-index: 10;
+    border-radius: 20px;
+    border:1px solid #777;
+    transition:transform 0.3s ease-in;
+}
+
+.movie__info:hover{
+    transform: scale(1.1);
+}
+
+.movie__img{
+    position:absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom:0;
+    z-index:2;
+}
+
+
+.movie__img img{
+    width:100%;
+    height: 100%;
+}

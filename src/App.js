@@ -7,7 +7,7 @@ import SignupPage from './page/signup/SignupPage';
 
 function App() {
   return (
-    <div className="App light__mode">
+    <div className="App dark__mode">
       
       <Switch>
         <Route path="/login">
@@ -19,11 +19,11 @@ function App() {
         </Route>
 
         <div className="App__container">
-            <Route path="/home">
+            <Route path="/">
                 <HomePage />
             </Route>
 
-            <Route>
+            <Route path="/like">
                 Liked movie
             </Route>
 

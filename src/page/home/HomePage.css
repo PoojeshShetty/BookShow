@@ -1,0 +1,39 @@
+.home__container{
+    padding:15px;
+}
+
+.nowshowing__title{
+    font-size:1.7rem;
+    font-weight: 900;
+}
+
+.upcoming__title{
+    margin-top: 15px;
+    font-size:1.7rem;
+    font-weight: bolder;
+}
+
+.movies{
+    display: flex;
+    gap:20px;
+    padding:23px;
+    overflow-x:scroll;
+}
+
+.movies::-webkit-scrollbar {
+    width: 25rem;
+    height: 0.4rem;
+  }
+
+.movies::-webkit-scrollbar-track {
+    background: #1e1e24;
+  }
+
+.movies::-webkit-scrollbar-thumb {
+    background: #6649b8;
+  }
+
+.movies a{
+    text-decoration: none;
+    color:inherit;
+}
