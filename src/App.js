@@ -5,6 +5,7 @@ import {Switch, Route} from 'react-router-dom'
 import LoginPage from './page/login/LoginPage';
 import SignupPage from './page/signup/SignupPage';
 import MovieViewPage from './page/movie/MovieViewPage';
+import BookingPage from './page/book/BookingPage';
 
 function App() {
   return (
@@ -18,23 +19,29 @@ function App() {
         <Route path="/signup">
           <SignupPage />
         </Route>
-
+        
+      </Switch>
         <div className="App__container">
-            <Route path="/" exact>
-                <HomePage />
-            </Route>
+            <Switch>
+              <Route path="/" exact>
+                  <HomePage />
+              </Route>
 
-            <Route path="/movie">
-              <MovieViewPage />
-            </Route>
+              <Route path="/movie">
+                <MovieViewPage />
+              </Route>
 
-            <Route path="/like">
-                Liked movie
-            </Route>
+              <Route path="/like">
+                  Liked movie
+              </Route>
 
+              <Route path="/book">
+                <BookingPage />
+              </Route>
+            </Switch>
           <Sidebar />
         </div>
-      </Switch>
+      
 
     </div>
   );

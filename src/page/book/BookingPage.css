@@ -1,0 +1,14 @@
+.bookingpage__container{
+    padding:1em;
+}
+
+.movie__title{
+    font-size: 3rem;
+}
+
+.bookdates{
+    background-color: rgba(56,56,56,0.3);
+    padding:10px;
+    font-size: 1.1rem;
+    margin:10px 0;
+}

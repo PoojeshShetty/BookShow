@@ -1,4 +1,4 @@
-import React from 'react'
+import {useEffect} from 'react'
 import './MovieViewPage.css'
 
 const movie = {
@@ -12,6 +12,11 @@ const movie = {
 }
 
 function MovieViewPage() {
+
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    })
+
     return (
         <div className="moviepage__container">
             <div className="moviepage__main">

@@ -1,4 +1,4 @@
-import React from 'react'
+import {useEffect} from 'react'
 import Movie from '../../compenent/movie/Movie'
 import {Link} from 'react-router-dom'
 import './HomePage.css'
@@ -97,6 +97,11 @@ const initialMovie = [
 ]
 
 function HomePage() {
+
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    })
+
     return (
         <div className="home__container">
             <div className="home__nowshowing">

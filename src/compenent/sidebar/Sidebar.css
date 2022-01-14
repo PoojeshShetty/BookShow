@@ -37,16 +37,6 @@
     display: none;
 }
 
-.logo{
-    font-weight: 900;
-    font-size: 1.5rem;
-    padding:1em 8px;
-}
-
-.sidebar__container:hover .logo .item__img img{
-    transform: rotate(180deg);
-}
-
 .sidebar__container:hover .logo .item__info{
     flex-direction: row-reverse;
 }
@@ -72,6 +62,10 @@
     .sidebar__item{
         margin:1em 0;
     }
+ 
+    .sidebar__container:hover .logo .item__img img{
+        transform: rotate(180deg);
+    }
 
     .sidebar__container:hover{
         width:14rem;
@@ -86,6 +80,12 @@
         padding:0 1em;
     }
 
+    .logo{
+        font-weight: 900;
+        font-size: 1.5rem;
+        padding:1em 8px;
+    }
+
 }
 
 @media screen and (max-width:400px) {
@@ -96,10 +96,6 @@
         width:100vw;
         bottom:0;
         left: 0;
-    }
-
-    .logo{
-        display: none;
     }
 
     .sidebar__items{
