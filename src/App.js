@@ -4,6 +4,7 @@ import HomePage from './page/home/HomePage';
 import {Switch, Route} from 'react-router-dom'
 import LoginPage from './page/login/LoginPage';
 import SignupPage from './page/signup/SignupPage';
+import MovieViewPage from './page/movie/MovieViewPage';
 
 function App() {
   return (
@@ -19,8 +20,12 @@ function App() {
         </Route>
 
         <div className="App__container">
-            <Route path="/">
+            <Route path="/" exact>
                 <HomePage />
+            </Route>
+
+            <Route path="/movie">
+              <MovieViewPage />
             </Route>
 
             <Route path="/like">

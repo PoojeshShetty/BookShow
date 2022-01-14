@@ -43,11 +43,6 @@
     padding:1em 8px;
 }
 
-.sidebar__container:hover .item__info{
-    justify-content: space-between;
-    padding:0 1em;
-}
-
 .sidebar__container:hover .logo .item__img img{
     transform: rotate(180deg);
 }
@@ -84,6 +79,11 @@
 
     .sidebar__container:hover .item__txt{
         display: block;
+    }
+    
+    .sidebar__container:hover .item__info{
+        justify-content: space-between;
+        padding:0 1em;
     }
 
 }

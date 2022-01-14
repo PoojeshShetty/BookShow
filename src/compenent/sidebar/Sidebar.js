@@ -8,7 +8,7 @@ function Sidebar() {
             <ul className='sidebar__items'>
 
                 <li className="sidebar__item logo">
-                    <Link to="#">
+                    <Link to="/">
                         <div className="item__info">
                             <div className="item__img">
                                 <img src="/svg/logo.svg" alt="logo" />
