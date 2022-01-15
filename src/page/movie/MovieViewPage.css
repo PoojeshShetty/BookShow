@@ -39,6 +39,12 @@
     height: 100%;
 }
 
+.moviepage__image a{
+    text-decoration: none;
+    background-color: #ff7eee;
+    border:1px solid #23232e;
+}
+
 .moviepage__image .btn{
     position:absolute;
     right: 0;

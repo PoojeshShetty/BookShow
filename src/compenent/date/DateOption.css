@@ -5,6 +5,7 @@
     border:1px solid white;
     padding:5px;
     margin:0 5px;
+    cursor: pointer;
 }
 
 .selected{

@@ -25,7 +25,7 @@ const initialMovie = [
     {
         id: 3,
         name: "Avengers",
-        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        image: "https://lumiere-a.akamaihd.net/v1/images/image_a094a4bd.jpeg?region=0%2C0%2C800%2C1200",
         actors: ["actor 1","actor 2","actor 3"],
         category: ["Action","Comedy","Sci-fi"],
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
@@ -34,7 +34,7 @@ const initialMovie = [
     {
         id: 4,
         name: "Avengers",
-        image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg",
         actors: ["actor 1","actor 2","actor 3"],
         category: ["Action","Comedy","Sci-fi"],
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",

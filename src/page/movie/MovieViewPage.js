@@ -1,4 +1,5 @@
 import {useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import './MovieViewPage.css'
 
 const movie = {
@@ -23,7 +24,7 @@ function MovieViewPage() {
                 <div className="moviepage__view">
                     <div className="moviepage__image">
                         <img src={movie.image} alt="movie" />
-                        <button className='btn'>Book</button>
+                        <Link to={`/book/${movie.id}`} className='btn'>Book</Link>
                     </div>
 
                     <div className='moviepage__summary'>

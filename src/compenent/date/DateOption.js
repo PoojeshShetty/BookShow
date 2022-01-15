@@ -1,6 +1,6 @@
 import React from 'react'
 import './DateOption.css'
-import {getMonth} from './utils/dateUtils'
+import {getMonth} from '../../utils/utils'
 
 function DateOption({propsDate, dateOption, setDateOption}) {
 
@@ -10,7 +10,6 @@ function DateOption({propsDate, dateOption, setDateOption}) {
         setDateOption(propsDate[0]+"-"+propsDate[1])
     }
 
-    console.log({dateOption})
     return (
         <div onClick={handleSaveDate} 
              className={(dateOption && dateOption === (propsDate[0]+"-"+propsDate[1])) ?
