@@ -14,7 +14,7 @@ export const getSeatSize = (val,start) => {
 }
 
 export const getCharacterIndex = (char) => {
-    return letterIndex.indexOf(char)
+    return letterIndex.indexOf(char.toLowerCase())
 }
 
 const calendar = {
@@ -34,4 +34,10 @@ const calendar = {
 
 export const getMonth = (monthNumber) => {
     return calendar[monthNumber]
+}
+
+export const getSeatNumbers = (selectedSeats) => {
+    return selectedSeats.map(seats => 
+        letterIndex.charAt(seats.i).toUpperCase()+"-"+seats.j
+    ).sort()
 }

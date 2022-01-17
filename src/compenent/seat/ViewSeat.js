@@ -1,16 +1,24 @@
 import React from 'react'
+import { useMovieContext } from '../../hook/useMovieContext'
 import './ViewSeat.css'
 
-function ViewSeat({seat,price,booked,selectedSeat,setSelectedSeat,selected,setPrice}) {
+function ViewSeat({seat,price,booked,selected}) {
+
+    const {dispatchMovie,noOfSeats,selectedSeats,totalPrice} = useMovieContext()
 
     const handleSelectedClick = () => {
-       setSelectedSeat(selectedSeat.concat({...seat}))
-       setPrice((prevState) => Number(prevState)+Number(price))
+
+        if(selectedSeats.length >= noOfSeats) return
+        
+        let newSelectedSeats = selectedSeats.concat({...seat})
+        dispatchMovie({type:'ADD_SELECTED_SEAT',payload:newSelectedSeats})
+        dispatchMovie({type:'ADD_PRICE',payload:totalPrice+Number(price)})
     }
     
     const handleUnSelectClick = () => {
-       setPrice((prevState) => Number(prevState) - Number(price))
-       setSelectedSeat(selectedSeat.filter(st=> st.i+"-"+st.j !== seat.i+"-"+seat.j))
+        let newSelectedSeats = selectedSeats.filter(st=> st.i+"-"+st.j !== seat.i+"-"+seat.j)
+        dispatchMovie({type:'REMOVE_SELECTED_SEAT',payload:newSelectedSeats})
+        dispatchMovie({type:'SUBTRACT_PRICE',payload:totalPrice - Number(price)})
     }
 
     if(booked)

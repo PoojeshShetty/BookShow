@@ -2,28 +2,41 @@ import {useEffect,useState} from 'react'
 import DateOption from '../../compenent/date/DateOption'
 import './BookingPage.css'
 import AvailableSeats from '../../compenent/seats/AvailableSeats'
-
-const bookDate = [
-    "15-01-2022",
-    "16-01-2022",
-    "20-01-2022"
-]
+import { useMovieContext } from '../../hook/useMovieContext'
+import { useHistory } from 'react-router-dom'
 
 function BookingPage() {
 
-    useEffect(()=>{
-        window.scrollTo(0,0)
-    })
-
+    const {selectedMovie,dispatchMovie} = useMovieContext()
+    const context = useMovieContext()
+    const history = useHistory()
     const [dateOption, setDateOption] = useState(null)
     const [seats, setSeats] = useState(1)
     const [view ,setView] = useState(false)
 
-    let val = bookDate.map(book => book.split("-"))
+    useEffect(()=>{
+        window.scrollTo(0,0)
+        if(!selectedMovie)
+            history.push('/')
+    })
+
+    if(!selectedMovie)
+        return(<div></div>)
+
+    console.log({selectedMovie})
+
+    let val = selectedMovie.bookingDates.map(book => book.split('-'))
 
     const numberArray = [1,2,3,4,5,6,7,8,9,10]
     console.log(dateOption)
+
+    console.log({context})
     
+    const handleBookSeat = () => {
+        dispatchMovie({type:'BOOK_SEAT',payload:{seats, date:dateOption}})
+        setView(true)
+    }
+
     return (
         <div className="bookingpage__container">
             <div className="movie__title">
@@ -56,7 +69,7 @@ function BookingPage() {
             {
                 (seats !== 0 && dateOption) ? 
                 <button 
-                    onClick={() => setView(true)}
+                    onClick={handleBookSeat}
                     className='btn'>Book Seat</button>
                 :
                 <div>Select date and number of seats</div>

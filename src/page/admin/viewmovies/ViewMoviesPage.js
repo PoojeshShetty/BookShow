@@ -1,7 +1,7 @@
-import {useEffect} from 'react'
-import Movie from '../../compenent/movie/Movie'
-import {Link} from 'react-router-dom'
-import './HomePage.css'
+import React from 'react'
+import Movie from '../../../compenent/movie/Movie'
+import './ViewMoviesPage.css'
+import { Link } from 'react-router-dom'
 
 const initialMovie = [
     {
@@ -106,49 +106,26 @@ const initialMovie = [
     }
 ]
 
-function HomePage() {
-
-    useEffect(()=>{
-        window.scrollTo(0,0)
-    })
-
+function ViewMoviesPage() {
     return (
-        <div className="home__container">
-            <div className="home__nowshowing">
-                <div className="nowshowing__title">
-                    Now Showing
-                </div>
-
-                <div className="movies">
-                    {
-                    initialMovie.map(movie => (
-                        <Link to={`/movie/${movie.id}`}  key={movie.id}>
-                            <Movie propsMovie={movie} />
-                        </Link>
-                    ))
-
-                    }
-                </div>
+        <div className="viewmovies__container">
+            <div className="viewmovies__title">
+                Movies
             </div>
-
-            <div className="home__upcoming">
-                <div className="upcoming__title">
-                    Upcoming
-                </div>
-
-                <div className="movies">
-                    {
-                    initialMovie.map(movie => (
-                        <Link to={`/movie/${movie.id}`}  key={movie.id}>
-                            <Movie propsMovie={movie} />
-                        </Link>
-                    ))
-
-                    }
-                </div>
+            <div className="viewmovies">
+                {
+                    initialMovie.map(movie => 
+                       <div className='viewmovie' key={movie.id}>
+                           <Movie propsMovie={movie} />
+                           
+                            <Link to={`/admin/editmovie/${movie.id}`} className='btn'>
+                                Edit
+                            </Link>
+                       </div>)
+                }
             </div>
         </div>
     )
 }
 
-export default HomePage
+export default ViewMoviesPage

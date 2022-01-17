@@ -7,12 +7,12 @@ function DateOption({propsDate, dateOption, setDateOption}) {
     const month = getMonth(propsDate[1])
 
     const handleSaveDate = () => {
-        setDateOption(propsDate[0]+"-"+propsDate[1])
+        setDateOption(propsDate[0]+"-"+propsDate[1]+"-"+propsDate[2])
     }
 
     return (
         <div onClick={handleSaveDate} 
-             className={(dateOption && dateOption === (propsDate[0]+"-"+propsDate[1])) ?
+             className={(dateOption && dateOption === (propsDate[0]+"-"+propsDate[1]+"-"+propsDate[2])) ?
                                         "dateoption selected" : "dateoption"}>
             <span className="month">
                 {propsDate[0]}

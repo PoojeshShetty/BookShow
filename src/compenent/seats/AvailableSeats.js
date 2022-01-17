@@ -1,7 +1,7 @@
-import {useState} from 'react'
 import GroupSeat from '../groupseat/GroupSeat'
 import './AvailableSeats.css'
-import { getCharacterIndex } from '../../utils/utils'
+import { getCharacterIndex, getSeatNumbers } from '../../utils/utils'
+import { useMovieContext } from '../../hook/useMovieContext'
 
 const seats = {
     'B-15' : {
@@ -27,8 +27,7 @@ const bookedSeatsInit = [
 
 function Seats({setView}) {
 
-    const [selectedSeat,setSelectedSeat] = useState([])
-    const [price, setPrice] = useState(0)
+    const {selectedSeats,noOfSeats,totalPrice} = useMovieContext()
 
     let bookedSeats = new Array(12)
     for(var i=0;i<11;i++)
@@ -48,6 +47,11 @@ function Seats({setView}) {
     }
 
     updateBookedSeats(bookedSeats,bookedSeatsInit)
+
+    const handleBookTicket = () => {
+        let selectedSeatNumbers = getSeatNumbers(selectedSeats)
+        console.log({selectedSeatNumbers})
+    }
 
     return (
         <div className="availableseats__container">
@@ -73,19 +77,25 @@ function Seats({setView}) {
                 {
                     Object.keys(seats).map((key,index) => (
                         <GroupSeat size={key} propsSeat={seats[key]} key={index}
-                            bookedSeats={bookedSeats} selectedSeat={selectedSeat} setSelectedSeat={setSelectedSeat}
-                            setPrice={setPrice}
+                            bookedSeats={bookedSeats}
                         />
                     ))
                 }
 
                 <div className="availableseats__btn">
-                    <button className='btn btn--disabled'>Book Ticket</button>
+
+                    {
+                        selectedSeats.length === noOfSeats ?
+                        <button className='btn' onClick={handleBookTicket}>Book Ticket</button> :
+                        <button className='btn btn--disabled' disabled>Book Ticket</button>
+                    }
+
                     <button
                         className='btn'
                         onClick={()=>setView(false)}
                         >cancel</button>
-                    <span className='ticket__price'>Total : Rs {price}</span>
+                    <span className='ticket__price'>Total : Rs {totalPrice}</span>
+
                 </div>
             </div>
         </div>

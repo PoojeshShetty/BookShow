@@ -2,11 +2,13 @@ import React from 'react'
 import ViewSeat from '../seat/ViewSeat'
 import './GroupSeat.css'
 import {getSeatSize} from '../../utils/utils'
+import { useMovieContext } from '../../hook/useMovieContext'
 
-function GroupSeat({size,propsSeat,bookedSeats,selectedSeat,setSelectedSeat,setPrice}) {
+function GroupSeat({size,propsSeat,bookedSeats,setPrice}) {
 
     const {startRow, endRow, endColumn} = getSeatSize(size,propsSeat.start)
-    console.log({selectedSeat})
+    const {selectedSeats} = useMovieContext()
+
     const seatDiv = []
 
     for(var i=startRow;i<=endRow;i++)
@@ -28,12 +30,10 @@ function GroupSeat({size,propsSeat,bookedSeats,selectedSeat,setSelectedSeat,setP
                         seats.map((seat,index) => 
                             <ViewSeat 
                                 booked={bookedSeats[seat.i][seat.j]===1}  
-                                selected= {selectedSeat.map(st => st.i+"-"+st.j).includes(seat.i+"-"+seat.j)}
+                                selected= {selectedSeats.map(st => st.i+"-"+st.j).includes(seat.i+"-"+seat.j)}
                                 seat={seat} 
                                 key={index} 
                                 price={propsSeat.price}
-                                selectedSeat={selectedSeat}
-                                setSelectedSeat={setSelectedSeat}
                                 setPrice={setPrice}
                             />
                         )
