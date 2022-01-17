@@ -10,6 +10,7 @@ import AddMoviePage from './page/admin/addmovie/AddMoviePage';
 import ViewMoviesPage from './page/admin/viewmovies/ViewMoviesPage';
 import EditMoviePage from './page/admin/editmovie/EditMoviePage';
 import LikePage from './page/like/LikePage';
+import Wrapper from './compenent/wrapper/Wrapper';
 
 function App() {
 
@@ -24,41 +25,51 @@ function App() {
         <Route path="/signup">
           <SignupPage />
         </Route>
-        
+
+        <Route path="/" exact>
+            <Wrapper>
+              <HomePage />
+            </Wrapper>
+        </Route>
+
+        <Route path="/movie">
+           <Wrapper>
+           <MovieViewPage />
+           </Wrapper>
+        </Route>
+
+        <Route path="/like">
+            <Wrapper>
+            <LikePage />
+            </Wrapper>
+        </Route>
+
+        <Route path="/book">
+          <Wrapper>
+            <BookingPage />
+          </Wrapper>
+        </Route>
+
+        <Route path="/admin/addmovie">
+          <Wrapper>
+          <AddMoviePage />
+          </Wrapper>
+        </Route>
+
+        <Route path="/admin/editmovie/:id">
+          <Wrapper>
+          <EditMoviePage />
+          </Wrapper>
+        </Route>
+
+        <Route path="/admin/viewmovies">
+          <Wrapper>
+          <ViewMoviesPage />
+          </Wrapper>
+        </Route>
+
       </Switch>
-        <div className="App__container">
-            <Switch>
-              <Route path="/" exact>
-                  <HomePage />
-              </Route>
-
-              <Route path="/movie">
-                <MovieViewPage />
-              </Route>
-
-              <Route path="/like">
-                 <LikePage />
-              </Route>
-
-              <Route path="/book">
-                <BookingPage />
-              </Route>
-
-              <Route path="/admin/addmovie">
-                <AddMoviePage />
-              </Route>
-
-              <Route path="/admin/editmovie/:id">
-                <EditMoviePage />
-              </Route>
-
-              <Route path="/admin/viewmovies">
-                <ViewMoviesPage />
-              </Route>
-
-            </Switch>
-          <Sidebar />
-        </div>
+    
       
 
     </div>
