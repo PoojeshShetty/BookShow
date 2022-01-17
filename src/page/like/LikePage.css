@@ -1,0 +1,16 @@
+.likedmovies{
+    padding:10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap:2em;
+}
+
+.likedmovies a{
+    display: inline-block;
+    text-decoration: none;
+    color:inherit;
+}
+
+.likedmovies a div{
+    margin:0 auto;
+}

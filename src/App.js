@@ -9,6 +9,7 @@ import BookingPage from './page/book/BookingPage';
 import AddMoviePage from './page/admin/addmovie/AddMoviePage';
 import ViewMoviesPage from './page/admin/viewmovies/ViewMoviesPage';
 import EditMoviePage from './page/admin/editmovie/EditMoviePage';
+import LikePage from './page/like/LikePage';
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
               </Route>
 
               <Route path="/like">
-                  Liked movie
+                 <LikePage />
               </Route>
 
               <Route path="/book">
