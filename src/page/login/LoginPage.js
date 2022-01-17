@@ -2,20 +2,20 @@ import {useState} from 'react'
 import Logo from '../../compenent/logo/Logo'
 import { Link} from 'react-router-dom'
 import './LoginPage.css'
+import useLogin from '../../hook/useLogin'
 
 function LoginPage() {
 
     const [email, setEmail] = useState('')
     const [password,setPassword] = useState('')
+    const {login, error} = useLogin()
 
     const handleLogin = (e) => {
 
         e.preventDefault()
 
-        console.log({
-            email,
-            password
-        })
+        login(email,password)
+
     }       
     return (
         <div className="login__container">
@@ -24,6 +24,10 @@ function LoginPage() {
 
             <form className="login__form" onSubmit={(e) => handleLogin(e)}>
                 <div className="login__title">Login</div>
+
+                {
+                    error && <div className="error--msg">{error}</div>
+                }
 
                 <div className="form__controle">
                     <label>Email</label>
@@ -39,7 +43,7 @@ function LoginPage() {
                 <div className="form__controle">
                     <label>Password</label>
                     <input 
-                        type="passord" 
+                        type="password" 
                         placeholder='Password'
                         value={password}
                         onChange={({target}) => setPassword(target.value.trim())}
