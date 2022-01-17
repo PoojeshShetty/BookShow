@@ -56,3 +56,7 @@
 .signup__btncl button{
    width:45%;
 }
+
+.login__link{
+    margin-top: 8px;
+}

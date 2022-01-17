@@ -49,3 +49,10 @@ ul{
 .btn:hover{
   background-color: white;
 }
+
+.error--msg{
+  padding:10px 8px;
+  border:1px solid red;
+  background-color: pink;
+  color:red;
+}

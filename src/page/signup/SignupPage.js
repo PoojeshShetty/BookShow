@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import { Link } from 'react-router-dom'
 import Logo from '../../compenent/logo/Logo'
 import './SignupPage.css'
 
@@ -7,22 +8,59 @@ function SignupPage() {
     const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
+    const [formError, setFormError] = useState(null)
+    const handleSignup = (e) => {
+
+        e.preventDefault()
+
+        if(checkFormError())
+        {
+            setTimeout(()=> setFormError(null), 7000)
+            return
+        }
+
+        console.log({
+            username,
+            email,
+            password
+        })
+    }
+
+    const checkFormError = () => {
+
+        if(username.length>20)
+        {
+            setFormError("username cannot be greater than 20 characters")
+            return true
+        }
+
+        if(password.length<10)
+        {
+            setFormError("password length should be greater than or equal to 10")
+            return true
+        }
+
+        return false
+    }
 
     return (
         <div className="signup__container">
 
             <Logo />
 
-            <form className="signup__form">
+            <form className="signup__form" onSubmit={(e)=>handleSignup(e)}>
                 <div className="signup__title">Sign Up</div>
 
+                {
+                    formError && <div className="error--msg">{formError}</div>
+                }
                 <div className="form__controle">
                     <label>Username</label>
                     <input 
                         type="text" 
                         placeholder='Username'
                         value={username}
-                        onChange={({target}) => setUsername(target.value)}
+                        onChange={({target}) => setUsername(target.value.trim())}
                         required
                     />
                 </div>
@@ -33,7 +71,7 @@ function SignupPage() {
                         type="email" 
                         placeholder='Email'
                         value={email}
-                        onChange={({target}) => setEmail(target.value)}
+                        onChange={({target}) => setEmail(target.value.trim())}
                         required
                     />
                 </div>
@@ -41,16 +79,19 @@ function SignupPage() {
                 <div className="form__controle">
                     <label>Password</label>
                     <input 
-                        type="passord" 
+                        type="password" 
                         placeholder='Password'
                         value={password}
-                        onChange={({target}) => setPassword(target.value)}
+                        onChange={({target}) => setPassword(target.value.trim())}
                         required
                     />
                 </div>
 
                 <button className='btn'>SIGNUP</button>
                 
+                <div className="login__link">
+                    Already have an account ? <Link to="/login">Login</Link>
+                </div>
             </form>
         </div>
     )

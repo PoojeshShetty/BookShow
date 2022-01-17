@@ -1,5 +1,4 @@
 import './App.css';
-import Sidebar from './compenent/sidebar/Sidebar';
 import HomePage from './page/home/HomePage';
 import {Switch, Route} from 'react-router-dom'
 import LoginPage from './page/login/LoginPage';

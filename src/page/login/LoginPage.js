@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import Logo from '../../compenent/logo/Logo'
+import { Link} from 'react-router-dom'
 import './LoginPage.css'
 
 function LoginPage() {
@@ -7,12 +8,21 @@ function LoginPage() {
     const [email, setEmail] = useState('')
     const [password,setPassword] = useState('')
 
+    const handleLogin = (e) => {
+
+        e.preventDefault()
+
+        console.log({
+            email,
+            password
+        })
+    }       
     return (
         <div className="login__container">
 
             <Logo />
 
-            <form className="login__form">
+            <form className="login__form" onSubmit={(e) => handleLogin(e)}>
                 <div className="login__title">Login</div>
 
                 <div className="form__controle">
@@ -21,7 +31,7 @@ function LoginPage() {
                         type="email" 
                         placeholder='Email'
                         value={email}
-                        onChange={({target}) => setEmail(target.value)}
+                        onChange={({target}) => setEmail(target.value.trim())}
                         required
                     />
                 </div>
@@ -32,7 +42,7 @@ function LoginPage() {
                         type="passord" 
                         placeholder='Password'
                         value={password}
-                        onChange={({target}) => setPassword(target.value)}
+                        onChange={({target}) => setPassword(target.value.trim())}
                         required
                     />
                 </div>
@@ -42,6 +52,9 @@ function LoginPage() {
                     <button className='btn'>Guest Credential</button>
                 </div>
                 
+                <div className="signup__link">
+                    Do not have an account ? <Link to="/signup">Sign up</Link>
+                </div>
             </form>
         </div>
     )
