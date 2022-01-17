@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../../compenent/logo/Logo'
+import useSignup from '../../hook/useSignup'
 import './SignupPage.css'
 
 function SignupPage() {
@@ -9,6 +10,8 @@ function SignupPage() {
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
     const [formError, setFormError] = useState(null)
+    const {signup, error} = useSignup()
+
     const handleSignup = (e) => {
 
         e.preventDefault()
@@ -19,11 +22,8 @@ function SignupPage() {
             return
         }
 
-        console.log({
-            username,
-            email,
-            password
-        })
+        signup(email,password, username)
+
     }
 
     const checkFormError = () => {
@@ -54,6 +54,11 @@ function SignupPage() {
                 {
                     formError && <div className="error--msg">{formError}</div>
                 }
+
+                {
+                    error && <div className="error--msg">{error}</div>
+                }
+                
                 <div className="form__controle">
                     <label>Username</label>
                     <input 
