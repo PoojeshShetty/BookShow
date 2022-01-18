@@ -1,6 +1,8 @@
 import {useState,useEffect} from 'react'
 import {projectFirestore} from '../config/firebase'
+import { useAuthContext } from './useAuthContext'
 import { useLoadingUtils } from './useLoadingUtils'
+import { useMovieContext } from './useMovieContext'
 
 function useMovie() {
 
@@ -8,6 +10,8 @@ function useMovie() {
     const [cancelled, setCancelled] = useState(false)
     const {setLoading, setLoaded} = useLoadingUtils()
     const [success, setSuccess] = useState(null)
+    const {user} = useAuthContext()
+    const {selectedMovie,totalPrice, movieDate} = useMovieContext()
 
     useEffect(()=>{
 
@@ -65,16 +69,17 @@ function useMovie() {
         setLoaded()
     }
 
-    const bookMovie = async (url,id, obj) => {
+    const bookMovie = async (url,id, obj,selectedSeats) => {
 
         setError(null)
         setLoading()
         
         try{
 
-            console.log({url})
-            await projectFirestore.collection(url).doc(id).set({
-                bookedSeat: obj
+            await projectFirestore.collection(url).doc(id).set({bookedSeat: obj})
+            
+            await projectFirestore.collection('bookings').doc(user.uid).collection('bookings').add({
+                movie:selectedMovie,data:movieDate,seats:selectedSeats, price:totalPrice
             })
             
             setSuccess(true)

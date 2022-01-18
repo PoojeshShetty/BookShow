@@ -86,7 +86,7 @@ function Seats({setView}) {
         let selectedSeatNumbers = getSeatNumbers(selectedSeats)
         selectedSeatNumbers = selectedSeatNumbers.concat()
         
-        bookMovie(`movies/${selectedMovie.id}/booking`,movieDate,selectedSeatNumbers.concat(seatsBooked.bookedSeat))
+        bookMovie(`movies/${selectedMovie.id}/booking`,movieDate,selectedSeatNumbers.concat(seatsBooked.bookedSeat), selectedSeatNumbers)
     }
 
     return (
