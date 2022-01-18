@@ -4,6 +4,8 @@ const authReducer = (state, action) => {
         case 'ADD_USERID':
             return ({...state, uid: action.payload})
         case 'AUTH_READY': 
+            return ({...state, isAuthReady: true, user: action.payload})
+        case 'LOGIN':
             return ({...state, user: action.payload})
         default:
             return state
