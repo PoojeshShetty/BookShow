@@ -1,7 +1,9 @@
-import React from 'react'
+import {useState,useEffect} from 'react'
 import Movie from '../../../compenent/movie/Movie'
 import './ViewMoviesPage.css'
 import { Link } from 'react-router-dom'
+import { projectFirestore } from '../../../config/firebase'
+import Loading from '../../../compenent/loading/Loading'
 
 const initialMovie = [
     {
@@ -107,6 +109,31 @@ const initialMovie = [
 ]
 
 function ViewMoviesPage() {
+
+    const [movies, setMovies] = useState(null)
+    
+    useEffect(()=>{
+
+        const getMovies = async () => {
+            const res = await projectFirestore.collection('movies').get()
+
+            if(!res.empty)
+            {
+                let result = []
+                res.docs.forEach(doc => result.push({id:doc.id, ...doc.data()}))
+                setMovies(result)
+                console.log({result})
+            }
+            else
+                setMovies([])
+        }
+
+        getMovies()
+    },[])
+
+    if(!movies)
+    return(<Loading />)
+
     return (
         <div className="viewmovies__container">
             <div className="viewmovies__title">
@@ -114,7 +141,7 @@ function ViewMoviesPage() {
             </div>
             <div className="viewmovies">
                 {
-                    initialMovie.map(movie => 
+                    movies.map(movie => 
                        <div className='viewmovie' key={movie.id}>
                            <Movie propsMovie={movie} />
                            

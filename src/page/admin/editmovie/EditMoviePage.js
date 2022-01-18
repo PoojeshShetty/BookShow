@@ -1,29 +1,57 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import './EditMoviePage.css'
-
-const movie = {
-    id: 1,
-    name: "Avengers",
-    image: "https://i.pinimg.com/originals/85/00/ba/8500ba1dd8868063379c9a1221fe351f.jpg",
-    actors: ["actor1", "actor2", "actor3"],
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
-    releaseDate: "2019-04-12",
-    status: "nowshowing",
-    bookingDates : ['22-01-2022', '28-01-2022']
-}
+import { useParams } from 'react-router-dom'
+import { projectFirestore } from '../../../config/firebase'
+import Loading from '../../../compenent/loading/Loading'
 
 function EditMoviePage() {
 
-    const [name,setName] = useState(movie.name)
-    const [imgUrl, setImgUrl] = useState(movie.image)
-    const [actors, setActors] = useState(movie.actors)
-    const [releaseDate, setReleaseDate] = useState(movie.releaseDate)
-    const [description, setDescription] = useState(movie.description)
-    const [bookingDates, setBookingDates] = useState(movie.bookingDates)
-    const [status, setStatus] = useState(movie.status)
+    const [name,setName] = useState('')
+    const [imgUrl, setImgUrl] = useState('')
+    const [actors, setActors] = useState('')
+    const [releaseDate, setReleaseDate] = useState('')
+    const [description, setDescription] = useState('')
+    const [bookingDates, setBookingDates] = useState('')
+    const [status, setStatus] = useState('')
     const [actorName, setActorName] = useState('')
     const [date, setDate] = useState('')
+    const {id} = useParams()
+    const [movie, setMovie] = useState(null)
     
+    useEffect(()=>{
+
+        const getMovie = async () => {
+            const res = await projectFirestore.collection('movies').doc(id).get()
+
+            console.log({res})
+            if(!res.exists)
+                setMovie('notexists')
+            else{
+                const movieObj = {id:res.id, ...res.data()}
+                setName(movieObj.name)
+                setImgUrl(movieObj.imgUrl)
+                setActors(movieObj.actors)
+                setReleaseDate(movieObj.releaseDate)
+                setDescription(movieObj.description)
+                setStatus(movieObj.status)
+                setBookingDates(movieObj.bookingDates)
+                setMovie(movieObj)
+            }
+        }
+
+        getMovie()
+    },[id])
+
+    if(!movie)
+    return (
+        <Loading />
+    )
+
+    if(movie==="notexists")
+    return(
+        <div>Following movie id does not exist</div>
+    )
+
     const handleAddActors = (e) => {
         e.preventDefault()
         if(actorName === "")
