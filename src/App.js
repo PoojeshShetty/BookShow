@@ -47,7 +47,7 @@ function App() {
           {!user && <Redirect to="/login" />}
         </Route>
 
-        <Route path="/movie">
+        <Route path="/movie/:id">
           {user && 
           	<Wrapper>
               <MovieViewPage />
@@ -98,7 +98,7 @@ function App() {
             <ViewMoviesPage />
           </Wrapper>
           }
-          
+
           {!user && <Redirect to="/login" />}
         </Route>
 

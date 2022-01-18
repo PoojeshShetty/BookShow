@@ -15,6 +15,7 @@ function useMovie() {
 
     },[])
 
+
     const addMovie = async (obj) => {
 
         setError(null)
@@ -64,10 +65,34 @@ function useMovie() {
         setLoaded()
     }
 
+    const bookMovie = async (url,id, obj) => {
+
+        setError(null)
+        setLoading()
+        
+        try{
+
+            console.log({url})
+            await projectFirestore.collection(url).doc(id).set({
+                bookedSeat: obj
+            })
+            
+            setSuccess(true)
+
+        }catch(err)
+        {
+            if(!cancelled)
+                setError(err.message)
+        }
+
+        setLoaded()
+    }
+
     return {
         addMovie,
         editMovie,
         success,
+        bookMovie,
         error
     }
 }

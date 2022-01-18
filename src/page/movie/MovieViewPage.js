@@ -1,31 +1,43 @@
-import {useEffect} from 'react'
+import {useEffect,useState} from 'react'
 import { useMovieContext } from '../../hook/useMovieContext'
-import { useHistory } from 'react-router-dom'
+import { useHistory,useParams } from 'react-router-dom'
+import { projectFirestore } from '../../config/firebase'
 import './MovieViewPage.css'
-
-const movie = {
-    id: 7,
-    name: "Avengers",
-    image: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg",
-    actors: ["actor 1","actor 2","actor 3"],
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum doloribus dignissimos minus omnis aliquid modi molestiae tenetur quia quisquam fuga unde, rerum repellat est ex accusantium neque deleniti illum tempora!",
-    releaseDate: "12-04-2019",
-    status:"nowshowing",
-    bookingDates: [
-        "15-01-2022",
-        "16-01-2022",
-        "20-01-2022"
-    ]
-}
+import Loading from '../../compenent/loading/Loading'
 
 function MovieViewPage() {
 
+    const [movie, setMovie] = useState(null)
     const {dispatchMovie} = useMovieContext()
+    const {id} = useParams()
     const history = useHistory()
 
     useEffect(()=>{
         window.scrollTo(0,0)
     })
+
+    useEffect(()=>{
+
+        const getMovie = async () => {
+            const res = await projectFirestore.collection('movies').doc(id).get()
+            if(res.exists)
+                setMovie({id:res.id,...res.data()})
+            else    
+                setMovie("notexist")
+        }
+        getMovie()
+
+    },[id])
+
+    if(!movie)
+    return (
+        <Loading />
+    )
+
+    if(movie==="notexist")
+    return (
+        <div>Movie does not exist</div>
+    )
 
     const handleBookClick = () => {
         dispatchMovie({type:'BOOK_MOVIE',payload:movie})
@@ -37,7 +49,7 @@ function MovieViewPage() {
             <div className="moviepage__main">
                 <div className="moviepage__view">
                     <div className="moviepage__image">
-                        <img src={movie.image} alt="movie" />
+                        <img src={movie.imgUrl} alt="movie" />
                         {
                             movie.status === "nowshowing" && 
                             <button 

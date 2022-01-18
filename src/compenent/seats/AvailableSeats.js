@@ -1,8 +1,14 @@
+import { useEffect,useState } from 'react'
 import GroupSeat from '../groupseat/GroupSeat'
 import './AvailableSeats.css'
 import { getCharacterIndex, getSeatNumbers } from '../../utils/utils'
 import { useMovieContext } from '../../hook/useMovieContext'
+import { projectFirestore } from '../../config/firebase'
+import Loading from '../loading/Loading'
+import { useMovie } from '../../hook/useMovie'
+import { useHistory } from 'react-router-dom'
 
+// seat arrangement 
 const seats = {
     'B-15' : {
         start:'A',
@@ -21,13 +27,41 @@ const seats = {
     }
 }
 
-const bookedSeatsInit = [
-    "a-15", "b-5","k-15","k-1","a-1","a-5","d-5","b-15","c-9","f-9","e-13"
-]
 
 function Seats({setView}) {
 
-    const {selectedSeats,noOfSeats,totalPrice} = useMovieContext()
+    const {selectedSeats,noOfSeats,totalPrice,selectedMovie,movieDate} = useMovieContext()
+    const [seatsBooked, setSeatsBooked] = useState(null)
+    const {bookMovie, success} = useMovie()
+    const history = useHistory()
+
+    useEffect(()=>{
+        const getBookedSeats = async () => {
+            const res = await projectFirestore.collection("movies").doc(selectedMovie.id).collection('booking').doc(movieDate).get()
+
+            if(res.exists)
+            {
+                setSeatsBooked({...res.data()})
+            }
+            else
+            setSeatsBooked("notexist")
+        }
+
+        getBookedSeats()
+
+    },[movieDate,selectedMovie])
+
+    useEffect(()=>{
+
+        if(!success) return
+
+        history.push('/')
+    },[success,history])
+
+    if(!seatsBooked)
+    return (
+        <Loading />
+    )
 
     let bookedSeats = new Array(12)
     for(var i=0;i<11;i++)
@@ -46,11 +80,13 @@ function Seats({setView}) {
         });
     }
 
-    updateBookedSeats(bookedSeats,bookedSeatsInit)
+    updateBookedSeats(bookedSeats,seatsBooked.bookedSeat)
 
     const handleBookTicket = () => {
         let selectedSeatNumbers = getSeatNumbers(selectedSeats)
-        console.log({selectedSeatNumbers})
+        selectedSeatNumbers = selectedSeatNumbers.concat()
+        
+        bookMovie(`movies/${selectedMovie.id}/booking`,movieDate,selectedSeatNumbers.concat(seatsBooked.bookedSeat))
     }
 
     return (

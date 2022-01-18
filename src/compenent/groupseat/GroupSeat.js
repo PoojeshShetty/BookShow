@@ -4,7 +4,7 @@ import './GroupSeat.css'
 import {getSeatSize} from '../../utils/utils'
 import { useMovieContext } from '../../hook/useMovieContext'
 
-function GroupSeat({size,propsSeat,bookedSeats,setPrice}) {
+function GroupSeat({size,propsSeat,bookedSeats}) {
 
     const {startRow, endRow, endColumn} = getSeatSize(size,propsSeat.start)
     const {selectedSeats} = useMovieContext()
@@ -34,7 +34,6 @@ function GroupSeat({size,propsSeat,bookedSeats,setPrice}) {
                                 seat={seat} 
                                 key={index} 
                                 price={propsSeat.price}
-                                setPrice={setPrice}
                             />
                         )
                      
