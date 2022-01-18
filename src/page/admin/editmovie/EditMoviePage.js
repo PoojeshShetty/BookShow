@@ -1,8 +1,9 @@
 import {useState,useEffect} from 'react'
 import './EditMoviePage.css'
-import { useParams } from 'react-router-dom'
+import { useParams,useHistory } from 'react-router-dom'
 import { projectFirestore } from '../../../config/firebase'
 import Loading from '../../../compenent/loading/Loading'
+import { useMovie } from '../../../hook/useMovie'
 
 function EditMoviePage() {
 
@@ -17,6 +18,8 @@ function EditMoviePage() {
     const [date, setDate] = useState('')
     const {id} = useParams()
     const [movie, setMovie] = useState(null)
+    const {editMovie, success} = useMovie()
+    const history = useHistory()
     
     useEffect(()=>{
 
@@ -41,6 +44,14 @@ function EditMoviePage() {
 
         getMovie()
     },[id])
+
+    useEffect(()=>{
+        if(!success)
+            return 
+        
+        history.push('/admin/viewmovies')
+
+    },[success,history])
 
     if(!movie)
     return (
@@ -78,7 +89,7 @@ function EditMoviePage() {
     const handleFormSubmit = (e) => {
         e.preventDefault()
 
-        console.log({
+        editMovie(movie.id,{
             name,
             imgUrl,
             actors,
@@ -112,12 +123,12 @@ function EditMoviePage() {
                <div className="title">Edit Movie</div>
                 <div className="form__control">
                     <label>Movie Name</label>
-                    <input type="text" value={name} onChange={({target}) => setName(target.value)} />
+                    <input type="text" value={name} onChange={({target}) => setName(target.value)} required/>
                 </div>
 
                 <div className="form__control">
                     <label>Movie Image Url</label>
-                    <input type="text" value={imgUrl} onChange={({target}) => setImgUrl(target.value)} />
+                    <input type="text" value={imgUrl} onChange={({target}) => setImgUrl(target.value)} required/>
                 </div>
 
                 <div className="form__control">
@@ -148,7 +159,7 @@ function EditMoviePage() {
                         rows="4" 
                         type="text" 
                         value={description} 
-                        onChange={({target}) => setDescription(target.value)} />
+                        onChange={({target}) => setDescription(target.value)} required/>
                 </div>
                 
                 <div className="form__control">
@@ -189,6 +200,7 @@ function EditMoviePage() {
                         type="date" 
                         value={releaseDate} 
                         onChange={({target}) => setReleaseDate(target.value)} 
+                        required
                     />
                 </div>
                 

@@ -43,8 +43,30 @@ function useMovie() {
         setLoaded()
     }
 
+    const editMovie = async (id, obj) => {
+
+        setError(null)
+        setLoading()
+
+        
+        try{
+
+            await projectFirestore.collection('movies').doc(id).set({...obj})
+            
+            setSuccess(true)
+
+        }catch(err)
+        {
+            if(!cancelled)
+                setError(err.message)
+        }
+
+        setLoaded()
+    }
+
     return {
         addMovie,
+        editMovie,
         success,
         error
     }
