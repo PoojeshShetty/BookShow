@@ -1,4 +1,6 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import { useMovie } from '../../../hook/useMovie'
+import { useHistory } from 'react-router-dom'
 import './AddMoviePage.css'
 
 function AddMoviePage() {
@@ -8,10 +10,19 @@ function AddMoviePage() {
     const [actorName, setActorName] = useState('')
     const [actors, setActors] = useState([])
     const [description, setDescription] = useState('')
-    const [status, setStatus] = useState('')
+    const [status, setStatus] = useState('nowshowing')
     const [bookingDates, setBookingDates] = useState([])
     const [date, setDate] = useState('')
     const [releaseDate, setReleaseDate] = useState('')
+    const {addMovie, success, error} = useMovie()
+    const history = useHistory()
+
+    useEffect(()=>{
+        if(!success) return
+
+        history.push('/admin/viewmovies')
+        
+    },[success,history])
 
     const handleAddActors = (e) => {
         e.preventDefault()
@@ -36,10 +47,10 @@ function AddMoviePage() {
         setStatus(e.target.value)
     }
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault()
 
-        console.log({
+        await addMovie({
             name,
             imgUrl,
             actors,
@@ -48,20 +59,26 @@ function AddMoviePage() {
             bookingDates,
             releaseDate
         })
+
     }
 
     return (
         <div className="addmoviepage__container">
             <form className="addmovie__form" onSubmit={(e) => handleFormSubmit(e)}>
                 <div className="title">Add Movie</div>
+
+                {
+                    error && <div className="error--msg">{error}</div>
+                }
+
                 <div className="form__control">
                     <label>Movie Name</label>
-                    <input type="text" value={name} onChange={({target}) => setName(target.value)} />
+                    <input type="text" value={name} onChange={({target}) => setName(target.value)} required/>
                 </div>
 
                 <div className="form__control">
                     <label>Movie Image Url</label>
-                    <input type="text" value={imgUrl} onChange={({target}) => setImgUrl(target.value)} />
+                    <input type="text" value={imgUrl} onChange={({target}) => setImgUrl(target.value)} required/>
                 </div>
 
                 <div className="form__control">
@@ -87,7 +104,7 @@ function AddMoviePage() {
                         rows="4" 
                         type="text" 
                         value={description} 
-                        onChange={({target}) => setDescription(target.value)} />
+                        onChange={({target}) => setDescription(target.value)} required/>
                 </div>
                 
                 <div className="form__control">
@@ -123,6 +140,7 @@ function AddMoviePage() {
                         type="date" 
                         value={releaseDate} 
                         onChange={({target}) => setReleaseDate(target.value)} 
+                        required
                     />
                 </div>
                 
