@@ -10,12 +10,13 @@ import ViewMoviesPage from './page/admin/viewmovies/ViewMoviesPage';
 import EditMoviePage from './page/admin/editmovie/EditMoviePage';
 import LikePage from './page/like/LikePage';
 import Wrapper from './compenent/wrapper/Wrapper';
-import useAuthContext from './hook/useAuthContext';
+import { useAuthContext } from './hook/useAuthContext';
 
 function App() {
 
-  const {isAuthReady, user} = useAuthContext()
+  const context = useAuthContext()
 
+  console.log({context})
   return (
     <div className="App dark__mode">
       

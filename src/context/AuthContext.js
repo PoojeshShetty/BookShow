@@ -8,26 +8,10 @@ function AuthContextProvider({children}) {
     
     const [authState, dispatchAuth] = useReducer(authReducer, initialAuthState)
 
-    const uid = authState.uid
-
-    useEffect(()=>{
-        projectAuth.onAuthStateChanged(user => {
-            if(user)
-                dispatchAuth({type:'ADD_USERID',payload:user.uid})
-            else
-                dispatchAuth({type:'AUTH_READY',payload: null})
-        })
-    })
-
-    useEffect(()=>{
-        if(!uid) return 
-    })
-
-
     return (
-        <AuthContextProvider value={{...authState,dispatchAuth}}>
+        <AuthContext.Provider value={{...authState,dispatchAuth}}>
             {children}
-        </AuthContextProvider>
+        </AuthContext.Provider>
     )
 }
 
