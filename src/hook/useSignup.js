@@ -27,6 +27,8 @@ function useSignup() {
                 type: 'user'
             })
 
+            dispatchAuth({type: 'ADD_USERID',payload: res.user.uid})
+            
             dispatchAuth({type:'LOGIN',payload:{uid:res.user.uid, username, email, type:'user'}})
 
         }catch(err)

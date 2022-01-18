@@ -1,8 +1,12 @@
 import React from 'react'
 import './Sidebar.css'
 import {Link} from 'react-router-dom'
+import {useLogout} from '../../hook/useLogout'
 
 function Sidebar() {
+
+    const {logout} = useLogout()
+
     return (
         <div className="sidebar__container">
             <ul className='sidebar__items'>
@@ -49,8 +53,7 @@ function Sidebar() {
 
                 </li>
 
-                <li className="sidebar__item">
-                   
+                <li className="sidebar__item" onClick={() => logout()}>
                     <div className="item__info logout">
                         <div className="item__img">
                             <img src="/svg/logout.svg" alt="logout" />

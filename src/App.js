@@ -1,6 +1,6 @@
 import './App.css';
 import HomePage from './page/home/HomePage';
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import LoginPage from './page/login/LoginPage';
 import SignupPage from './page/signup/SignupPage';
 import MovieViewPage from './page/movie/MovieViewPage';
@@ -15,7 +15,7 @@ import Loading from './compenent/loading/Loading';
 
 function App() {
 
-  const {isAuthReady} = useAuthContext()
+  const {isAuthReady,user} = useAuthContext()
 
   const context = useAuthContext()
 
@@ -30,59 +30,80 @@ function App() {
       
       <Switch>
         <Route path="/login">
-          <LoginPage />
+          {!user && <LoginPage />}
+          {user && <Redirect to="/" />}
         </Route>
 
         <Route path="/signup">
-          <SignupPage />
+          {!user && <SignupPage />}
+          {user && <Redirect to="/" />}
         </Route>
 
         <Route path="/" exact>
+          {user && 
             <Wrapper>
               <HomePage />
-            </Wrapper>
+            </Wrapper>}
+          {!user && <Redirect to="/login" />}
         </Route>
 
         <Route path="/movie">
-           <Wrapper>
-           <MovieViewPage />
+          {user && 
+          	<Wrapper>
+              <MovieViewPage />
            </Wrapper>
+            }
+           {!user && <Redirect to="/login" />}
         </Route>
 
         <Route path="/like">
+            {user &&
             <Wrapper>
-            <LikePage />
-            </Wrapper>
+              <LikePage />
+            </Wrapper>}
+            {!user && <Redirect to="/login" />}
         </Route>
 
         <Route path="/book">
-          <Wrapper>
+           {user &&
+           <Wrapper>
             <BookingPage />
-          </Wrapper>
+          </Wrapper>}
+
+          {!user && <Redirect to="/login" />}
         </Route>
 
         <Route path="/admin/addmovie">
+          {user &&
           <Wrapper>
-          <AddMoviePage />
-          </Wrapper>
+            <AddMoviePage />
+          </Wrapper>}
+
+          {!user && <Redirect to="/login" />}
         </Route>
 
         <Route path="/admin/editmovie/:id">
+          {user && 
           <Wrapper>
-          <EditMoviePage />
+            <EditMoviePage />
           </Wrapper>
+          }
+
+          {!user && <Redirect to="/login" />}
         </Route>
 
         <Route path="/admin/viewmovies">
+          {user &&
           <Wrapper>
-          <ViewMoviesPage />
+            <ViewMoviesPage />
           </Wrapper>
+          }
+          
+          {!user && <Redirect to="/login" />}
         </Route>
 
       </Switch>
     
-      
-
     </div>
   );
 }

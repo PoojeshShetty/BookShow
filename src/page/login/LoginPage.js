@@ -16,7 +16,8 @@ function LoginPage() {
 
         login(email,password)
 
-    }       
+    }  
+         
     return (
         <div className="login__container">
 

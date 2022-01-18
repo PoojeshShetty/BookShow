@@ -25,6 +25,9 @@ function useLogin() {
             const res = await projectAuth.signInWithEmailAndPassword(email,password)
 
             const user = await projectFirestore.collection('users').doc(res.user.uid).get()
+            console.log({user})
+
+            dispatchAuth({type: 'ADD_USERID',payload: res.user.uid})
 
             dispatchAuth({type:'LOGIN',user:{uid:user.id, ...user.data()}})
 
