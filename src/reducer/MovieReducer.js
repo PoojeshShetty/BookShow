@@ -30,6 +30,8 @@ export const MovieReducer = (state, action) => {
             return {...state, liked: action.payload}
         case 'LIKED_FROM_SERVER':
             return {...state, liked: action.payload}
+        case 'LOGOUT':
+            return {...initialMovieState}
         default:
             return state
     }

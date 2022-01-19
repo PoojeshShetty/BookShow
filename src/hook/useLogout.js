@@ -1,11 +1,13 @@
 import {projectAuth} from '../config/firebase'
 import { useAuthContext } from './useAuthContext'
 import { useLoadingUtils } from './useLoadingUtils'
+import { useMovieContext } from './useMovieContext'
 
 function useLogout() {
 
      const { setLoading, setLoaded} = useLoadingUtils()
      const {dispatchAuth} = useAuthContext()
+     const {dispatchMovie} = useMovieContext()
 
     const logout = async () => {
 
@@ -16,6 +18,7 @@ function useLogout() {
             await projectAuth.signOut()
 
             dispatchAuth({type:'LOGOUT'})
+            dispatchMovie({type:'LOGOUT'})
 
         }catch(err)
         {

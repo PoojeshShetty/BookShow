@@ -48,7 +48,7 @@ function App() {
           {!user && <Redirect to="/login" />}
         </Route>
 
-        <Route path="/movie/:id">
+        <Route path="/movie/:id" exact>
           {user && 
           	<Wrapper>
               <MovieViewPage />
@@ -57,7 +57,7 @@ function App() {
            {!user && <Redirect to="/login" />}
         </Route>
 
-        <Route path="/like">
+        <Route path="/like" exact>
             {user &&
             <Wrapper>
               <LikePage />
@@ -65,7 +65,7 @@ function App() {
             {!user && <Redirect to="/login" />}
         </Route>
 
-        <Route path="/book">
+        <Route path="/book" exact>
            {user &&
            <Wrapper>
             <BookingPage />
@@ -74,27 +74,33 @@ function App() {
           {!user && <Redirect to="/login" />}
         </Route>
 
-        <Route path="/admin/addmovie">
-          {user &&
-          <Wrapper>
-            <AddMoviePage />
-          </Wrapper>}
-
+        <Route path="/admin/addmovie" exact>
+          {user  &&
+            user.type === "admin" ?
+            <Wrapper>
+              <AddMoviePage />
+            </Wrapper>:
+          <Redirect to="/"/>
+          }
+          
           {!user && <Redirect to="/login" />}
+
         </Route>
 
-        <Route path="/admin/editmovie/:id">
-          {user && 
-          <Wrapper>
-            <EditMoviePage />
-          </Wrapper>
+        <Route path="/admin/editmovie/:id" exact>
+          {user &&
+            user.type === "admin" ?
+            <Wrapper>
+              <EditMoviePage />
+            </Wrapper>:
+          <Redirect to="/"/>
           }
 
           {!user && <Redirect to="/login" />}
         </Route>
 
         
-        <Route path="/ticket">
+        <Route path="/ticket" exact>
           {user && 
           <Wrapper>
             <TicketsBookedPage />
@@ -104,16 +110,21 @@ function App() {
           {!user && <Redirect to="/login" />}
         </Route>
 
-        <Route path="/admin/viewmovies">
+        <Route path="/admin/viewmovies" exact>
           {user &&
-          <Wrapper>
-            <ViewMoviesPage />
-          </Wrapper>
+            user.type === "admin" ?
+            <Wrapper>
+              <ViewMoviesPage />
+          </Wrapper> :
+          <Redirect to="/" />
           }
 
           {!user && <Redirect to="/login" />}
         </Route>
 
+        <Route path="*">
+          <div>404 Page not found</div>
+        </Route>
       </Switch>
     
     </div>

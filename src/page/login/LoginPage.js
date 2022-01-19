@@ -17,7 +17,13 @@ function LoginPage() {
         login(email,password)
 
     }  
-         
+     
+    const handleGuestCredential = (e) => {
+        e.preventDefault()
+        setEmail('test@gmail.com')
+        setPassword('test@gmail.com')
+    }
+
     return (
         <div className="login__container">
 
@@ -54,7 +60,7 @@ function LoginPage() {
 
                 <div className="login__btncl">
                     <button className='btn'>LOGIN</button>
-                    <button className='btn'>Guest Credential</button>
+                    <button className='btn' onClick={(e) => handleGuestCredential(e)}>Guest Credential</button>
                 </div>
                 
                 <div className="signup__link">

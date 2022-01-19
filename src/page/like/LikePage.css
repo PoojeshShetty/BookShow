@@ -1,3 +1,7 @@
+.likepage__container{
+    padding:10px;
+}
+
 .likedmovies{
     padding:10px;
     display: grid;

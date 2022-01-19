@@ -2,10 +2,14 @@ import React from 'react'
 import './Sidebar.css'
 import {Link} from 'react-router-dom'
 import {useLogout} from '../../hook/useLogout'
+import { useAuthContext } from '../../hook/useAuthContext'
+import AdminLinks from './AdminLinks'
+import UserLinks from './UserLinks'
 
 function Sidebar() {
 
     const {logout} = useLogout()
+    const {user} = useAuthContext()
 
     return (
         <div className="sidebar__container">
@@ -25,33 +29,12 @@ function Sidebar() {
 
                 </li>
 
-                <li className="sidebar__item">
-                    <Link to="/ticket">
-                        <div className="item__info">
-                            <div className="item__img">
-                                <img src="/svg/ticket.svg" alt="ticket" />
-                            </div>
-                            <div className="item__txt">
-                                Bookings
-                            </div>
-                        </div>
-                    </Link>
-
-                </li>
-
-                <li className="sidebar__item">
-                    <Link to="/like">
-                        <div className="item__info">
-                            <div className="item__img">
-                                <img src="/svg/like.svg" alt="like" />
-                            </div>
-                            <div className="item__txt">
-                                Liked
-                            </div>
-                        </div>
-                    </Link>
-
-                </li>
+                {
+                    user && user.type==="admin" ?
+                    <AdminLinks />
+                    :
+                    <UserLinks />
+                }
 
                 <li className="sidebar__item" onClick={() => logout()}>
                     <div className="item__info logout">

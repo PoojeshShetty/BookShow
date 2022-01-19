@@ -1,16 +1,16 @@
 import {Link} from 'react-router-dom'
 
-function UserLinks() {
+function AdminLinks() {
     return (
         <>
             <li className="sidebar__item">
-                <Link to="/ticket">
+                <Link to="/admin/viewmovies">
                     <div className="item__info">
                         <div className="item__img">
-                            <img src="/svg/ticket.svg" alt="ticket" />
+                            <img src="/svg/movie.svg" alt="viewmovies" />
                         </div>
                         <div className="item__txt">
-                            Bookings
+                            View Movies
                         </div>
                     </div>
                 </Link>
@@ -18,13 +18,13 @@ function UserLinks() {
             </li>
 
             <li className="sidebar__item">
-                <Link to="/like">
+                <Link to="/admin/addmovie">
                     <div className="item__info">
                         <div className="item__img">
-                            <img src="/svg/like.svg" alt="like" />
+                            <img src="/svg/add.svg" alt="add" />
                         </div>
                         <div className="item__txt">
-                            Liked
+                            Add Movies
                         </div>
                     </div>
                 </Link>
@@ -34,4 +34,4 @@ function UserLinks() {
     )
 }
 
-export default UserLinks
+export default AdminLinks

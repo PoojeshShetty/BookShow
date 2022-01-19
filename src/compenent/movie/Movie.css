@@ -43,6 +43,7 @@
     border:1px solid black;
     padding:2px;
     background-color: rgba(0,0,0);
+    cursor: pointer;
 }
 
 .like__btn img{
