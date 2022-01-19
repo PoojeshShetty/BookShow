@@ -13,6 +13,7 @@ import Wrapper from './compenent/wrapper/Wrapper';
 import { useAuthContext } from './hook/useAuthContext';
 import Loading from './compenent/loading/Loading';
 import TicketsBookedPage from './page/tickets/TicketsBookedPage';
+import PageNotFound from './page/pagenotfound/PageNotFound';
 
 function App() {
 
@@ -123,8 +124,9 @@ function App() {
         </Route>
 
         <Route path="*">
-          <div>404 Page not found</div>
+            <PageNotFound />
         </Route>
+        
       </Switch>
     
     </div>

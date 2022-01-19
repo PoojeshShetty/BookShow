@@ -36,7 +36,7 @@ function TicketsBookedPage() {
 
     if(bookings === "empty")
     return (
-        <div>No booked tickets to view</div>
+        <div className='page--info'>No booked tickets to view</div>
     )
 
     console.log({bookings})

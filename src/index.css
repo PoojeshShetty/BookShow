@@ -56,3 +56,9 @@ ul{
   background-color: pink;
   color:red;
 }
+
+.page--info{
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+}

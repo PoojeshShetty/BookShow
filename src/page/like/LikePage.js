@@ -10,7 +10,7 @@ function LikePage() {
 
     if(liked.length === 0)
     return (
-        <div>Liked Movie list is empty</div>
+        <div className='page--info'>Liked Movie list is empty</div>
     )
 
     return (

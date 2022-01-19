@@ -18,7 +18,6 @@ function Movie({propsMovie}) {
         removeMovieFromLike(propsMovie)
     }
 
-    console.log({liked})
     return (
         <div className="movie__info">
             <div className="movie__img">

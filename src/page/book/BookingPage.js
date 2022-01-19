@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom'
 function BookingPage() {
 
     const {selectedMovie,dispatchMovie} = useMovieContext()
-    const context = useMovieContext()
     const history = useHistory()
     const [dateOption, setDateOption] = useState(null)
     const [seats, setSeats] = useState(1)
@@ -23,14 +22,9 @@ function BookingPage() {
     if(!selectedMovie)
         return(<div></div>)
 
-    console.log({selectedMovie})
-
     let val = selectedMovie.bookingDates.map(book => book.split('-'))
 
     const numberArray = [1,2,3,4,5,6,7,8,9,10]
-    console.log(dateOption)
-
-    console.log({context})
     
     const handleBookSeat = () => {
         dispatchMovie({type:'BOOK_SEAT',payload:{seats, date:dateOption}})

@@ -36,7 +36,7 @@ function MovieViewPage() {
 
     if(movie==="notexist")
     return (
-        <div>Movie does not exist</div>
+        <div className='page--info'>Movie does not exist</div>
     )
 
     const handleBookClick = () => {

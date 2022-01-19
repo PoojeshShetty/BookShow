@@ -60,7 +60,7 @@ function EditMoviePage() {
 
     if(movie==="notexists")
     return(
-        <div>Following movie id does not exist</div>
+        <div className='page--info'>Following movie id does not exist</div>
     )
 
     const handleAddActors = (e) => {
