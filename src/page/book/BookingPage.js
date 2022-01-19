@@ -34,7 +34,7 @@ function BookingPage() {
     return (
         <div className="bookingpage__container">
             <div className="movie__title">
-                Avengers
+                {selectedMovie.name}
             </div>
             
             <div className="bookdates">
