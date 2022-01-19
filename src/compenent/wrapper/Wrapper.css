@@ -3,7 +3,6 @@
     border:1px solid #777;
     cursor:pointer;
     padding:4px;
-    position:absolute;
-    top:15px;
-    right: 15px;
+    float: right;
+    margin:0 10px;
 }
