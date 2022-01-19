@@ -1,0 +1,9 @@
+.theme__mode{
+    background-color: inherit;
+    border:1px solid #777;
+    cursor:pointer;
+    padding:4px;
+    position:absolute;
+    top:15px;
+    right: 15px;
+}

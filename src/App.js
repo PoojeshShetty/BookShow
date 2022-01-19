@@ -14,10 +14,12 @@ import { useAuthContext } from './hook/useAuthContext';
 import Loading from './compenent/loading/Loading';
 import TicketsBookedPage from './page/tickets/TicketsBookedPage';
 import PageNotFound from './page/pagenotfound/PageNotFound';
+import useThemeContext from './hook/useThemeContext';
 
 function App() {
 
   const {isAuthReady,user} = useAuthContext()
+  const {theme} = useThemeContext()
 
   if(!isAuthReady)
     return(
@@ -25,7 +27,7 @@ function App() {
     )
   
   return (
-    <div className="App dark__mode">
+    <div className={theme === 'dark' ? "App dark__mode" : "App light__mode"}>
       
       <Switch>
         <Route path="/login">
