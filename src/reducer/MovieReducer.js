@@ -21,6 +21,8 @@ export const MovieReducer = (state, action) => {
             return {...state, totalPrice:action.payload}
         case 'SUBTRACT_PRICE':
             return {...state, totalPrice:action.payload}
+        case 'RESET_BOOK':
+            return {...state, ...initialMovieState}
         default:
             return state
     }

@@ -12,6 +12,7 @@ import LikePage from './page/like/LikePage';
 import Wrapper from './compenent/wrapper/Wrapper';
 import { useAuthContext } from './hook/useAuthContext';
 import Loading from './compenent/loading/Loading';
+import TicketsBookedPage from './page/tickets/TicketsBookedPage';
 
 function App() {
 
@@ -86,6 +87,17 @@ function App() {
           {user && 
           <Wrapper>
             <EditMoviePage />
+          </Wrapper>
+          }
+
+          {!user && <Redirect to="/login" />}
+        </Route>
+
+        
+        <Route path="/ticket">
+          {user && 
+          <Wrapper>
+            <TicketsBookedPage />
           </Wrapper>
           }
 

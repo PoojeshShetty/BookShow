@@ -11,7 +11,7 @@ function useMovie() {
     const {setLoading, setLoaded} = useLoadingUtils()
     const [success, setSuccess] = useState(null)
     const {user} = useAuthContext()
-    const {selectedMovie,totalPrice, movieDate} = useMovieContext()
+    const {selectedMovie,totalPrice, movieDate,dispatchMovie} = useMovieContext()
 
     useEffect(()=>{
 
@@ -79,9 +79,10 @@ function useMovie() {
             await projectFirestore.collection(url).doc(id).set({bookedSeat: obj})
             
             await projectFirestore.collection('bookings').doc(user.uid).collection('bookings').add({
-                movie:selectedMovie,data:movieDate,seats:selectedSeats, price:totalPrice
+                movie:selectedMovie,date:movieDate,seats:selectedSeats, price:totalPrice
             })
-            
+
+            dispatchMovie({type:'RESET_BOOK'})
             setSuccess(true)
 
         }catch(err)

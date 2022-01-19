@@ -26,7 +26,7 @@ function Sidebar() {
                 </li>
 
                 <li className="sidebar__item">
-                    <Link to="#">
+                    <Link to="/ticket">
                         <div className="item__info">
                             <div className="item__img">
                                 <img src="/svg/ticket.svg" alt="ticket" />
@@ -40,7 +40,7 @@ function Sidebar() {
                 </li>
 
                 <li className="sidebar__item">
-                    <Link to="#">
+                    <Link to="/like">
                         <div className="item__info">
                             <div className="item__img">
                                 <img src="/svg/like.svg" alt="like" />
