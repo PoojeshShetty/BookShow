@@ -11,7 +11,7 @@ function useMovie() {
     const {setLoading, setLoaded} = useLoadingUtils()
     const [success, setSuccess] = useState(null)
     const {user} = useAuthContext()
-    const {selectedMovie,totalPrice, movieDate,dispatchMovie} = useMovieContext()
+    const {selectedMovie,totalPrice, movieDate,dispatchMovie,liked} = useMovieContext()
 
     useEffect(()=>{
 
@@ -94,11 +94,55 @@ function useMovie() {
         setLoaded()
     }
 
+    const addMovieToLike = async (movie) => {
+        
+        setError(null)
+        setLoading()
+        
+        try{
+
+            console.log("add movie like")
+            await projectFirestore.collection('liked').doc(user.uid).collection('movies').doc(movie.id).set({...movie})
+
+            dispatchMovie({type:'ADD_LIKE_MOVIES',payload:movie})
+
+        }catch(err)
+        {
+            if(!cancelled)
+                setError(err.message)
+        }
+
+        setLoaded()
+    }
+
+    const removeMovieFromLike = async (movie) => {
+
+        setError(null)
+        setLoading()
+
+        try{
+
+            await projectFirestore.collection('liked').doc(user.uid).collection('movies').doc(movie.id).delete()
+
+            dispatchMovie({type:'REMOVE_LIKE_MOVIES',payload:liked.filter(val => val.id !== movie.id)})
+
+        }catch(err)
+        {
+            if(!cancelled)
+                setError(err.message)
+        }
+
+        setLoaded()
+
+    }
+
     return {
         addMovie,
         editMovie,
         success,
         bookMovie,
+        addMovieToLike,
+        removeMovieFromLike,
         error
     }
 }

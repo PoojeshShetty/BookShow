@@ -4,6 +4,7 @@ export const initialMovieState = {
     selectedMovie : null,
     movieDate: null,
     totalPrice:0,
+    liked : []
 }
 
 export const MovieReducer = (state, action) => {
@@ -22,7 +23,13 @@ export const MovieReducer = (state, action) => {
         case 'SUBTRACT_PRICE':
             return {...state, totalPrice:action.payload}
         case 'RESET_BOOK':
-            return {...state, ...initialMovieState}
+            return {...state, noOfSeats : 0,selectedSeats : [],selectedMovie : null,movieDate: null,totalPrice:0}
+        case 'ADD_LIKE_MOVIES':
+            return {...state, liked:state.liked.concat({...action.payload})}
+        case 'REMOVE_LIKE_MOVIES':
+            return {...state, liked: action.payload}
+        case 'LIKED_FROM_SERVER':
+            return {...state, liked: action.payload}
         default:
             return state
     }

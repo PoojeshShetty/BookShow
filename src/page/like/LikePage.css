@@ -5,6 +5,12 @@
     gap:2em;
 }
 
+.likepage__title{
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin:10px 0;
+}
+
 .likedmovies a{
     display: inline-block;
     text-decoration: none;
