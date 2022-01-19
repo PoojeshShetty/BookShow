@@ -18,8 +18,6 @@ function HomePage() {
         const getMovies = async () => {
             const res = await projectFirestore.collection('movies').get()
 
-            console.log({res})
-
             if(!res.empty)
             {
                 let result = []

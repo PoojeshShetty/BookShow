@@ -37,7 +37,7 @@ function AddMoviePage() {
         if(date === "")
             return
         let newDate = date.split('-')
-        console.log({newDate})
+        
         setBookingDates(bookingDates.concat((newDate[2]+"-"+newDate[1]+"-"+newDate[0])))
         setDate('')
     }

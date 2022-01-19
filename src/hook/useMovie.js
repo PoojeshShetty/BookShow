@@ -52,7 +52,6 @@ function useMovie() {
 
         setError(null)
         setLoading()
-
         
         try{
 
@@ -101,7 +100,6 @@ function useMovie() {
         
         try{
 
-            console.log("add movie like")
             await projectFirestore.collection('liked').doc(user.uid).collection('movies').doc(movie.id).set({...movie})
 
             dispatchMovie({type:'ADD_LIKE_MOVIES',payload:movie})
@@ -136,9 +134,31 @@ function useMovie() {
 
     }
 
+    const deleteMovie = async (id) => {
+
+        setError(null)
+        setLoading()
+        
+        try{
+
+            await projectFirestore.collection('movies').doc(id).delete()
+            
+            setSuccess(true)
+
+        }catch(err)
+        {
+            if(!cancelled)
+                setError(err.message)
+        }
+
+        setLoaded()
+
+    }
+
     return {
         addMovie,
         editMovie,
+        deleteMovie,
         success,
         bookMovie,
         addMovieToLike,

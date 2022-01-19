@@ -18,7 +18,7 @@ function EditMoviePage() {
     const [date, setDate] = useState('')
     const {id} = useParams()
     const [movie, setMovie] = useState(null)
-    const {editMovie, success} = useMovie()
+    const {editMovie, deleteMovie, success} = useMovie()
     const history = useHistory()
     
     useEffect(()=>{
@@ -26,7 +26,6 @@ function EditMoviePage() {
         const getMovie = async () => {
             const res = await projectFirestore.collection('movies').doc(id).get()
 
-            console.log({res})
             if(!res.exists)
                 setMovie('notexists')
             else{
@@ -76,7 +75,7 @@ function EditMoviePage() {
         if(date === "")
             return
         let newDate = date.split('-')
-        console.log({newDate})
+        
         setBookingDates(bookingDates.concat((newDate[2]+"-"+newDate[1]+"-"+newDate[0])))
         setDate('')
     }
@@ -84,6 +83,12 @@ function EditMoviePage() {
     const handleSelectStatus = (e) => {
         e.preventDefault()
         setStatus(e.target.value)
+    }
+
+    const handleDeleteMovie = (e) => {
+        e.preventDefault()
+        
+        deleteMovie(id)
     }
 
     const handleFormSubmit = (e) => {
@@ -205,8 +210,8 @@ function EditMoviePage() {
                 </div>
                 
                 <button className="btn">Submit</button>
-
-
+                
+                <button className='btn btn--delete' onClick={(e) => handleDeleteMovie(e)}>Delete</button>
             </form>
         </div>
     )

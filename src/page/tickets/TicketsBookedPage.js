@@ -18,7 +18,7 @@ function TicketsBookedPage() {
             {
                 let result = []
                 res.docs.forEach(doc => result.push({id:doc.id, ...doc.data()}))
-                console.log(new Date(result[0].date.toString()))
+                
                 setBookings(result)
             }
             else
@@ -39,7 +39,6 @@ function TicketsBookedPage() {
         <div className='page--info'>No booked tickets to view</div>
     )
 
-    console.log({bookings})
     return (
         <div className="ticket__container">
             <div className="viewtickets">

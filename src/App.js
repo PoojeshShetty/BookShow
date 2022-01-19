@@ -19,9 +19,6 @@ function App() {
 
   const {isAuthReady,user} = useAuthContext()
 
-  const context = useAuthContext()
-
-  console.log({context})
   if(!isAuthReady)
     return(
       <Loading />
@@ -126,7 +123,7 @@ function App() {
         <Route path="*">
             <PageNotFound />
         </Route>
-        
+
       </Switch>
     
     </div>

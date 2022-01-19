@@ -49,7 +49,15 @@
 .category__items{
     padding:8px 4px;
 }
+
 .category__items span{
     margin:3px 0;
     padding:4px;
+}
+
+.btn--delete{
+    background-color: pink;
+    border-color: red;
+    color:red;
+    margin:0 10px;
 }
