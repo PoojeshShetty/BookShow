@@ -88,6 +88,48 @@ function Seats({setView}) {
         
         bookMovie(`movies/${selectedMovie.id}/booking`,movieDate,selectedSeatNumbers.concat(seatsBooked.bookedSeat), selectedSeatNumbers)
     }
+    
+    const loadScript = (src) => {
+        return new Promise((resolve) => {
+            const script = document.createElement('script')
+            script.src = src
+
+            script.onload = () => {
+                resolve(true)
+            }
+
+            script.onerror = () => {
+                resolve(false)
+            }
+
+            document.body.appendChild(script)
+        })
+    }
+
+    const displayRazorpay = async () => {
+        const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+
+        if(!res){
+            alert('You are offline.... failed to load')
+            return
+        }
+
+        const options = {
+            key: "rzp_test_4o3uvRKN3BrjkH",
+            currency: "INR",
+            amount: totalPrice*100,
+            name: "BigKart",
+            description: "Thanks",
+    
+            handler: function (response) {
+                handleBookTicket()
+            }   
+        }
+
+        const paymentObject = new window.Razorpay(options)
+        paymentObject.open()
+
+    }
 
     return (
         <div className="availableseats__container">
@@ -122,7 +164,7 @@ function Seats({setView}) {
 
                     {
                         selectedSeats.length === noOfSeats ?
-                        <button className='btn' onClick={handleBookTicket}>Book Ticket</button> :
+                        <button className='btn' onClick={displayRazorpay}>Book Ticket</button> :
                         <button className='btn btn--disabled' disabled>Book Ticket</button>
                     }
 
