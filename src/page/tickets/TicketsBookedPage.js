@@ -9,6 +9,10 @@ function TicketsBookedPage() {
     const {user} = useAuthContext()
     const [bookings, setBookings] = useState(null)
 
+    useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
+    
     useEffect(()=>{
 
         const viewBookedTickets = async () => {

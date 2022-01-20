@@ -19,7 +19,6 @@ function useMovie() {
 
     },[])
 
-
     const addMovie = async (obj) => {
 
         setError(null)

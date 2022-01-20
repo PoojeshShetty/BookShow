@@ -2,11 +2,16 @@ import { Link } from 'react-router-dom'
 import Movie from '../../compenent/movie/Movie'
 import { useMovieContext } from '../../hook/useMovieContext'
 import './LikePage.css'
+import {useEffect} from 'react'
 
 
 function LikePage() {
 
     const {liked} = useMovieContext()
+
+    useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
 
     if(liked.length === 0)
     return (

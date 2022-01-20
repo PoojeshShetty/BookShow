@@ -22,6 +22,10 @@ function EditMoviePage() {
     const history = useHistory()
     
     useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
+
+    useEffect(()=>{
 
         const getMovie = async () => {
             const res = await projectFirestore.collection('movies').doc(id).get()

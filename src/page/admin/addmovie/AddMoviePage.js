@@ -24,6 +24,10 @@ function AddMoviePage() {
         
     },[success,history])
 
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
+
     const handleAddActors = (e) => {
         e.preventDefault()
         if(actorName === "")
@@ -47,10 +51,10 @@ function AddMoviePage() {
         setStatus(e.target.value)
     }
 
-    const handleFormSubmit = async (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault()
 
-        await addMovie({
+        addMovie({
             name,
             imgUrl,
             actors,

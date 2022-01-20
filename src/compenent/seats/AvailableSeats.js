@@ -43,8 +43,6 @@ function Seats({setView}) {
             {
                 setSeatsBooked({...res.data()})
             }
-            else
-            setSeatsBooked("notexist")
         }
 
         getBookedSeats()
@@ -80,6 +78,7 @@ function Seats({setView}) {
         });
     }
 
+    // populate already booked seats to variable bookedSeats
     updateBookedSeats(bookedSeats,seatsBooked.bookedSeat)
 
     const handleBookTicket = () => {

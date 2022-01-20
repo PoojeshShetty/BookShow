@@ -10,6 +10,10 @@ function ViewMoviesPage() {
     const [movies, setMovies] = useState(null)
     
     useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
+
+    useEffect(()=>{
 
         const getMovies = async () => {
             const res = await projectFirestore.collection('movies').get()
