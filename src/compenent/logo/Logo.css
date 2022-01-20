@@ -1,0 +1,19 @@
+.logo__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.logo{
+    margin:0 auto;
+}
+
+.logo__txt{
+    font-size: 2rem;
+    font-weight: bolder;
+}
+.logo__img img{
+    width: 3rem;
+    filter: invert(43%) sepia(99%) saturate(4399%) hue-rotate(283deg) brightness(106%) contrast(90%);
+}

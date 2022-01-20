@@ -1,0 +1,8 @@
+.theme__mode{
+    background-color: inherit;
+    border:1px solid #777;
+    cursor:pointer;
+    padding:4px;
+    margin:5px 10px;
+    display: block;
+}

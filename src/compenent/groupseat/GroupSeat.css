@@ -1,0 +1,9 @@
+.groupseat__container{
+    margin:1rem 0;
+    width:100%;
+}
+
+.seat__row{
+    width:650px;
+    margin:0 auto;
+}

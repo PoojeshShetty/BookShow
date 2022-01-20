@@ -1,0 +1,113 @@
+
+.moviepage__container{
+    min-height: 98vh;
+    padding:10px;
+}
+
+.moviepage__main{
+    background-color: rgb(43, 43, 43);
+    color:white;
+    width:900px;
+    margin:3em auto 0;
+    max-width: 100%;
+    padding:1.3em;
+    border-radius: 20px;
+}
+
+.moviepage__actors .cast{
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin:5px 0;
+}
+
+.moviepage__description .summary{
+    margin:6px 0;
+}
+
+.moviepage__image{
+    width:310px;
+    max-width: 100%;
+    height: 450px;
+    max-height: 100%;
+    border:1px solid white;
+    z-index: 5;
+    position:relative
+}
+
+.moviepage__image img{
+    width:100%;
+    height: 100%;
+}
+
+.moviepage__image a{
+    text-decoration: none;
+    background-color: #ff7eee;
+    border:1px solid #23232e;
+}
+
+.moviepage__image .btn{
+    position:absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 1.2rem;
+    font-weight: 900;
+    padding:0.3em 0.5em;
+    border-radius: 5px;
+}
+
+.moviepage__name{
+    font-size:1.8rem;
+    font-weight: 900;
+    text-align: center;
+    margin:10px 0;
+}
+
+.moviepage__description{
+    margin-top: 0.2em;
+    text-align: justify;
+    font-size: 1.2rem;
+}
+
+.moviepage__summary{
+    padding:12px;
+    font-size: 1.1rem;
+}
+
+.moviepage__info{
+    padding:3px 0;
+}
+
+.moviepage__actors .cast{
+    color:white;
+}
+
+.moviepage__date{
+    margin:0.6em 0;
+}
+
+@media screen and (min-width:600px) {
+    
+    .moviepage__view{
+        display: flex;
+    }
+
+    .moviepage__summary{
+        flex:1;
+    }
+}
+
+@media screen and (max-width:600px) {
+
+    .moviepage__image{
+        margin:0 auto;
+    }
+
+    .moviepage__view{
+        position:relative;
+    }
+
+    .moviepage__summary{
+        z-index: 10;
+    }
+
+}

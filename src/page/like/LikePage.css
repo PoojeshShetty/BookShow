@@ -1,0 +1,26 @@
+.likepage__container{
+    padding:10px;
+}
+
+.likedmovies{
+    padding:10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap:2em;
+}
+
+.likepage__title{
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin:10px 0;
+}
+
+.likedmovies a{
+    display: inline-block;
+    text-decoration: none;
+    color:inherit;
+}
+
+.likedmovies a div{
+    margin:0 auto;
+}

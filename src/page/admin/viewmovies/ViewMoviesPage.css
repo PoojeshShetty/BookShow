@@ -1,0 +1,35 @@
+.viewmovies__container{
+    padding:10px;
+}
+
+.viewmovies__title{
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+
+.viewmovies{
+    padding:10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap:2em;
+}
+
+.viewmovie{
+    margin:0 auto;
+}
+
+.viewmovie a{
+    display: inline-block;
+    text-decoration: none;
+    color:inherit;
+}
+
+.viewmovie .btn{
+    padding:8px 10px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin:8px 10px;
+    color:#23232e;
+    background-color: #ff7eee;
+    border:1px solid #23232e;
+}

@@ -1,0 +1,71 @@
+.availableseats__container{
+    position: absolute;
+    top:0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index:501;
+    overflow-x: scroll;
+    padding:0 1em;
+}
+
+.availableseats{
+    margin:3rem auto;
+    width: 800px;
+    padding:1em;
+    background-color: var(--primary-color);
+    color:var(--secondary-color);
+}
+
+.seats__indicators{
+    display: flex;
+}
+
+.seat__empty{
+    display: flex;
+    align-items: center;
+}
+
+.seat__marker{
+    margin:0 1em;
+    display: flex;
+    align-items: center;
+}
+
+.seat__marker span{
+    display: inline-block;
+    margin:0 5px;
+    width: 1em;
+    height: 1em;
+    border:1px solid white;
+}
+
+.seat--empty{
+    background-color: rgba(27,27,27);
+}
+
+.seat--selected{
+    background-color: grey;
+}
+
+.seat--booked{
+    background-color: #ff7eee;
+}
+
+.availableseats__btn .btn{
+    padding:10px 8px;
+    margin:0 5px;
+}
+
+.btn--disabled{
+    opacity:0.8;
+    background-color: white;
+    cursor: context-menu;
+}
+
+.ticket__price{
+    float: right;
+    font-size: 1.3rem;
+    font-weight: 900;
+}

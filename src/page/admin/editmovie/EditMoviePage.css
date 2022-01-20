@@ -1,0 +1,64 @@
+.editmovie__container{
+    padding:1em;
+}
+
+.editmovie__form{
+    width:500px;
+    max-width: 100%;
+    margin:0 auto;
+}
+
+.editmovie__form .btn{
+    padding:10px 8px;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.editmovie__form .title{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin:10px 0;
+}
+
+.form__control{
+    margin:8px 0;
+}
+
+.form__control label{
+    display: block;
+    margin-bottom: 4px;
+}
+
+.form__control input, textarea,select,option{
+    width:100%;
+    padding:10px 8px;
+    font-size: 1.1rem;
+    background-color: white;
+}
+
+.form__control textarea{
+    resize: none;
+}
+
+.form__control .btn{
+    padding:6px 3px;
+    font-size: 1rem;
+    margin:5px;
+}
+
+.category__items{
+    padding:8px 4px;
+}
+
+.category__items span{
+    margin:3px 0;
+    padding:4px;
+}
+
+.btn--delete{
+    background-color: pink;
+    border-color: red;
+    color:red;
+    margin:0 10px;
+}

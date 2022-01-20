@@ -1,0 +1,19 @@
+.dateoption{
+    display: inline-block;
+    background-color: rgba(27,27,27);
+    color:white;
+    border:1px solid white;
+    padding:5px;
+    margin:0 5px;
+    cursor: pointer;
+}
+
+.selected{
+    background-color:white;
+    color:black;
+}
+
+.dateoption .month, .date{
+    display: block;
+    padding:4px;
+}

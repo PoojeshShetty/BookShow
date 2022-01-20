@@ -1,0 +1,12 @@
+.viewseat__container{
+    display: inline-block;
+    width:2em;
+    height: 2em;
+    border:1px solid white;
+    margin:5px;
+    cursor: pointer;
+}
+
+.seat--booked{
+    cursor:context-menu;
+}
